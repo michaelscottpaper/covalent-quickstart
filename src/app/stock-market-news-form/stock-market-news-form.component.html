@@ -1,0 +1,174 @@
+<div
+  layout-gt-sm="row"
+  tdMediaToggle="gt-xs"
+>
+  <div flex-gt-sm>
+    <mat-card tdMediaToggle="gt-xs">
+      <mat-card-title>Add a new story</mat-card-title>
+      <mat-divider></mat-divider>
+      <mat-card-content>
+        <td-steps>
+          <td-step
+            #step1
+            label="Title"
+            sublabel="Set title"
+            active="true"
+            [state]="step1State"
+            (deactivated)="validateStep(1)"
+          >
+            <form
+              #form1="ngForm"
+              (ngSubmit)="submitStep(1)"
+            >
+              <div layout="row">
+                <mat-form-field flex>
+                  <input
+                    #titleInput
+                    matInput
+                    class="form-control"
+                    placeholder="Title of post"
+                    required
+                    name="title"
+                    autofocus
+                    [(ngModel)]="title"
+                  >
+                </mat-form-field>
+
+              </div>
+              <div class="push-top">
+                <button
+                  mat-button
+                  class="text-upper"
+                  type="submit"
+                  color="accent"
+                  [disabled]="step1SubmitDisabled"
+                >
+                  Continue
+                </button>
+                <button
+                  mat-button
+                  class="text-upper m-l"
+                  (click)="cancelStep(1)"
+                >
+                  Cancel
+                </button>
+              </div>
+              <ng-template td-step-summary>
+                <h4 matLine>{{title}}</h4>
+              </ng-template>
+            </form>
+          </td-step>
+
+          <td-step
+            #step2
+            label="Body"
+            sublabel="Set body"
+            [state]="step2State"
+            (deactivated)="validateStep(2)"
+          >
+            <form
+              #form2="ngForm"
+              (ngSubmit)="submitStep(2)"
+            >
+              <td-text-editor
+                #markdownEditor
+                [value]="markdown"
+              >
+              </td-text-editor>
+              <div class="push-top">
+                <button
+                  mat-button
+                  type="submit"
+                  class="text-upper"
+                  color="accent"
+                  [disabled]="step2SubmitDisabled"
+                >
+                  Continue
+                </button>
+                <button
+                  mat-button
+                  class="text-upper m-l"
+                  (click)="cancelStep(2)"
+                >
+                  Cancel
+                </button>
+              </div>
+              <ng-template td-step-summary>
+                <td-markdown>{{sampleMarkdown}}</td-markdown>
+              </ng-template>
+            </form>
+          </td-step>
+
+          <td-step
+            #step3
+            [state]="step3State"
+            label="Cover photo"
+            sublabel="Add a cover photo"
+            (deactivated)="validateStep(3)"
+          >
+            <form #form3="ngForm">
+
+              <td-file-upload
+                #singleFileUpload
+                [(ngModel)]="file"
+                name="fileUpload"
+              >
+                <mat-icon>file_upload</mat-icon>
+                <span>{{ singleFileUpload.value?.name }}</span>
+                <ng-template td-file-input-label>
+                  <mat-icon>attach_file</mat-icon>
+                  <span>
+                    Choose a file...
+                  </span>
+                </ng-template>
+              </td-file-upload>
+
+              <div class="push-top">
+                <button
+                  mat-button
+                  type="submit"
+                  class="text-upper"
+                  color="accent"
+                  (click)="submitStep(3)"
+                >
+                  Continue
+                </button>
+                <button
+                  class="text-upper m-l"
+                  (click)="cancelStep(3)"
+                  mat-button
+                >
+                  Cancel
+                </button>
+              </div>
+              <ng-template td-step-summary>
+                <img
+                  class="sample-image"
+                  src="/assets/stock-market.jpg"
+                />
+              </ng-template>
+            </form>
+          </td-step>
+        </td-steps>
+        <mat-divider matDivider></mat-divider>
+        <button
+          mat-raised-button
+          class="push-top text-upper"
+          color="accent"
+          (click)="submitForm()"
+          [disabled]="submitFormIsDisabled"
+        >
+          Submit
+        </button>
+
+        <a
+          mat-button
+          [routerLink]="['/']"
+          class="m-l"
+        >
+          Cancel
+        </a>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

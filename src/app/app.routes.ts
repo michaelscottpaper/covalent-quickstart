@@ -5,20 +5,34 @@ import { MainComponent } from './main.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 
-const routes: Routes = [{
-    path: 'login',
-    component: LoginComponent,
-  }, {
-    path: '',
+import { StockMarketDashboardComponent } from './stock-market-dashboard/stock-market-dashboard.component';
+import { StockMarketNewsForm } from './stock-market-news-form/stock-market-news-form.component';
+
+const routes: Routes = [
+  {
+    path: 'add-story',
     component: MainComponent,
-    children: [{
-        component: DashboardComponent,
+    // TODO: Add route guard
+    children: [
+      {
+        component: StockMarketNewsForm,
         path: '',
-      }, {
-        path: '',
-        loadChildren: './users/users.module#UsersModule',
       },
     ],
+  },
+  {
+    path: 'dashboard',
+    component: MainComponent,
+    children: [
+      {
+        component: StockMarketDashboardComponent,
+        path: '',
+      },
+    ],
+  },
+  {
+    path: '**',
+    redirectTo: '/dashboard',
   },
 ];
 
