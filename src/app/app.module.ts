@@ -15,6 +15,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSelectModule } from '@angular/material';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatTableModule} from '@angular/material/table';
 
 import { CovalentCommonModule } from '@covalent/core/common';
 import { CovalentLayoutModule } from '@covalent/core/layout';
@@ -77,6 +78,7 @@ export function getAPI(): string {
     MatToolbarModule,
     MatSelectModule,
     MatSnackBarModule,
+    MatTableModule,
     // covalent modules
     CovalentCommonModule,
     CovalentLayoutModule,

@@ -47,7 +47,7 @@
                 </button>
                 <button
                   mat-button
-                  class="text-upper"
+                  class="text-upper m-l"
                   (click)="cancelStep1()"
                 >
                   Cancel
@@ -87,7 +87,7 @@
                 </button>
                 <button
                   mat-button
-                  class="text-upper"
+                  class="text-upper m-l"
                   (click)="cancelStep(2)"
                 >
                   Cancel
@@ -106,9 +106,7 @@
             sublabel="Add a cover photo"
             (deactivated)="validateStep(3)"
           >
-            <form
-              #form3="ngForm"
-            >
+            <form #form3="ngForm">
 
               <td-file-upload
                 #singleFileUpload
@@ -136,7 +134,7 @@
                   Continue
                 </button>
                 <button
-                  class="text-upper"
+                  class="text-upper m-l"
                   (click)="cancelStep(3)"
                   mat-button
                 >
@@ -145,8 +143,8 @@
               </div>
               <ng-template td-step-summary>
                 <img
-                class="sample-image"
-                src="../../assets/stock-market.jpg"
+                  class="sample-image"
+                  src="../../assets/stock-market.jpg"
                 />
               </ng-template>
             </form>
@@ -162,13 +160,14 @@
         >
           Submit
         </button>
-        <button
+
+        <a
           mat-button
-          class="text-upper"
-          (click)="cancelForm()"
+          [routerLink]="['/']"
+          class="m-l"
         >
           Cancel
-        </button>
+        </a>
       </mat-card-content>
     </mat-card>
   </div>
