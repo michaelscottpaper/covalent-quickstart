@@ -13,12 +13,18 @@ import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSelectModule } from '@angular/material';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { CovalentCommonModule } from '@covalent/core/common';
 import { CovalentLayoutModule } from '@covalent/core/layout';
 import { CovalentMediaModule } from '@covalent/core/media';
 import { CovalentLoadingModule } from '@covalent/core/loading';
 
+import { CovalentStepsModule } from  '@covalent/core/';
+import { CovalentTextEditorModule } from '@covalent/text-editor';
+import { CovalentMarkdownModule } from '@covalent/markdown';
+import { CovalentFileModule } from '@covalent/core/file';
 import { CovalentHttpModule, IHttpInterceptor } from '@covalent/http';
 
 import { NgxChartsModule } from '@swimlane/ngx-charts';
@@ -33,6 +39,8 @@ import { USER_PROVIDER, USERS_API } from './users';
 import { MainComponent } from './main.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { StockMarketNewsForm } from './stock-market-news-form/stock-market-news-form.component';
+import { StockMarketDashboardComponent } from './stock-market-dashboard/stock-market-dashboard.component';
 
 const httpInterceptorProviders: Type<any>[] = [
   RequestInterceptor,
@@ -48,6 +56,8 @@ export function getAPI(): string {
     MainComponent,
     LoginComponent,
     DashboardComponent,
+    StockMarketNewsForm,
+    StockMarketDashboardComponent,
   ], // directives, components, and pipes owned by this NgModule
   imports: [
     // angular modules
@@ -65,11 +75,17 @@ export function getAPI(): string {
     MatDividerModule,
     MatInputModule,
     MatToolbarModule,
+    MatSelectModule,
+    MatSnackBarModule,
     // covalent modules
     CovalentCommonModule,
     CovalentLayoutModule,
     CovalentMediaModule,
     CovalentLoadingModule,
+    CovalentStepsModule,
+    CovalentTextEditorModule,
+    CovalentMarkdownModule,
+    CovalentFileModule,
     CovalentHttpModule.forRoot({
       interceptors: [{
         interceptor: RequestInterceptor, paths: ['**'],

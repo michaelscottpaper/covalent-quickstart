@@ -13,9 +13,9 @@ export class MainComponent {
       route: '/',
       icon: 'dashboard',
     }, {
-      title: 'Manage Users',
-      route: '/users',
-      icon: 'people',
+      title: 'Add story',
+      route: '/add-story',
+      icon: 'add',
     },
   ];
 
